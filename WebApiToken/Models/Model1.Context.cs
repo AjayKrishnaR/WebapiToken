@@ -25,6 +25,6 @@ namespace WebApiToken.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<WebApiToken> WebApiTokens { get; set; }
+        public virtual DbSet<TokenEntity> WebApiTokens { get; set; }
     }
 }

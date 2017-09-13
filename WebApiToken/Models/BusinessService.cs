@@ -9,19 +9,19 @@ namespace WebApiToken.Models
     {
      
 
-        public WebApiToken GenerateToken(String username, string password)
+        public TokenEntity GenerateToken(String username, string password)
         {
             string token = Guid.NewGuid().ToString();
             DateTime issuedOn = DateTime.Now;
             DateTime expiredOn = DateTime.Now.AddMinutes(5);
-            var tokendomain = new WebApiToken
+            var tokendomain = new TokenEntity
             {
                 Username = username,
                 Authtoken = token,
                 IssuedOn = issuedOn,
                 ExpiryOn = expiredOn
             };
-            WebApiToken tk = new WebApiToken();
+            TokenEntity tk = new TokenEntity();
             StoreDbEntities sd = new StoreDbEntities();
             tk = sd.WebApiTokens.Where(x => x.Username == username & x.Password == password).FirstOrDefault();
             if (tk.Username != null)
@@ -41,7 +41,7 @@ namespace WebApiToken.Models
             throw new NotImplementedException();
         }
 
-        WebApiToken Iservice.ValidateToken(string tokenValue)
+        TokenEntity Iservice.ValidateToken(string tokenValue)
         {
             throw new NotImplementedException();
         }

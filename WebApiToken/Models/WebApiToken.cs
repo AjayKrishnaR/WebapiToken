@@ -12,7 +12,7 @@ namespace WebApiToken.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class WebApiToken
+    public partial class TokenEntity
     {
         public int Userid { get; set; }
         public string Username { get; set; }

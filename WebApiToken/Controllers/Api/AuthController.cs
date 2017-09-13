@@ -11,11 +11,24 @@ namespace WebApiToken.Controllers.Api
 {
     public class AuthController : ApiController
     {
-
-
-
-
+        
         BusinessService _BusinessService = new BusinessService();
+
+        [HttpGet]
+        // [Route("List")]
+        public IHttpActionResult GetAllStudents()
+        {
+            List<TokenEntity> members = new List<TokenEntity>();
+            using (var context = new StoreDbEntities())
+            {
+                members = context.WebApiTokens.ToList();
+            }
+
+            if (members.Count > 0)
+                return Ok(members);
+            else
+                return Ok("No students found");
+        }
 
         private HttpResponseMessage GetAuthToken(string username, string password)
         {
@@ -38,7 +51,7 @@ namespace WebApiToken.Controllers.Api
         [Route("GetUserAgain")]
         public  string GetUserDetails(string username)
         {
-            return "Invalid";
+            return "Authorized";
         }
     }
 }

@@ -8,7 +8,7 @@ namespace WebApiToken.Models
 {
     interface Iservice
     {
-        WebApiToken GenerateToken(string username, string password);
-        WebApiToken ValidateToken(string tokenValue);
+        TokenEntity GenerateToken(string username, string password);
+        TokenEntity ValidateToken(string tokenValue);
     }
 }
